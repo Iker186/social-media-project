@@ -37,7 +37,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     github_user  = st.text_input('👤 Github user', value='Iker186')
-    github_repo  = st.text_input('📦 Github repo', value='analisis_datos')
+    github_repo  = st.text_input('📦 Github repo', value='social-media-project')
     spark_job    = st.text_input('🧪 Spark job', value='spark')
 
 with col2:
