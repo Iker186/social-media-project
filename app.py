@@ -47,3 +47,43 @@ with col2:
 
 if st.button("▶️ POST spark submit"):
    post_spark_job(github_user, github_repo, spark_job, github_token, code_url, dataset_url)
+
+# POSTGRES
+def post_to_kafka_postgres():
+    url = "https://producer-postgres-latest.onrender.com/send-to-kafka-postgres"  # Cambia esta URL con la de tu productor en Render
+    
+    try:
+        # Realizamos la petición POST
+        response = requests.post(url)
+
+        if response.status_code == 200:
+            st.success("✅ Datos enviados a Kafka (Postgres) correctamente!")
+        else:
+            st.error(f"❌ Error al enviar los datos: {response.status_code}")
+            st.write(response.text)
+    
+    except requests.exceptions.RequestException as e:
+        st.error(f"❌ Error de conexión: {e}")
+
+if st.button("Enviar datos a postgres"):
+    post_to_kafka_postgres()  # Llama a la función para enviar los datos
+
+# MONGO
+def post_to_kafka_mongo():
+    url = "https://producer-mongo-latest.onrender.com/send-to-kafka-mongo"  # Cambia esta URL con la de tu productor en Render
+    
+    try:
+        # Realizamos la petición POST
+        response = requests.post(url)
+
+        if response.status_code == 200:
+            st.success("✅ Datos enviados a Kafka (Mongo) correctamente!")
+        else:
+            st.error(f"❌ Error al enviar los datos: {response.status_code}")
+            st.write(response.text)
+    
+    except requests.exceptions.RequestException as e:
+        st.error(f"❌ Error de conexión: {e}")
+
+if st.button("Enviar datos a mongo"):
+    post_to_kafka_mongo()  # Llama a la función para enviar los datos
