@@ -50,10 +50,9 @@ if st.button("▶️ POST spark submit"):
 
 # POSTGRES
 def post_to_kafka_postgres():
-    url = "https://producer-postgres-latest.onrender.com/send-to-kafka-postgres"  # Cambia esta URL con la de tu productor en Render
+    url = "https://producer-postgres-latest.onrender.com/send-to-kafka-postgres" 
     
     try:
-        # Realizamos la petición POST
         response = requests.post(url)
 
         if response.status_code == 200:
@@ -66,14 +65,13 @@ def post_to_kafka_postgres():
         st.error(f"❌ Error de conexión: {e}")
 
 if st.button("Enviar datos a postgres"):
-    post_to_kafka_postgres()  # Llama a la función para enviar los datos
+    post_to_kafka_postgres()  
 
 # MONGO
 def post_to_kafka_mongo():
-    url = "https://producer-mongo-latest.onrender.com/send-to-kafka-mongo"  # Cambia esta URL con la de tu productor en Render
+    url = "https://producer-mongo-latest.onrender.com/send-to-kafka-mongo"  
     
     try:
-        # Realizamos la petición POST
         response = requests.post(url)
 
         if response.status_code == 200:
@@ -86,4 +84,4 @@ def post_to_kafka_mongo():
         st.error(f"❌ Error de conexión: {e}")
 
 if st.button("Enviar datos a mongo"):
-    post_to_kafka_mongo()  # Llama a la función para enviar los datos
+    post_to_kafka_mongo() 
