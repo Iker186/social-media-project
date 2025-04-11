@@ -85,3 +85,43 @@ def post_to_kafka_mongo():
 
 if st.button("Enviar datos a mongo"):
     post_to_kafka_mongo() 
+
+# POSTGRES
+def get_data_postgres():
+    url = "https://consumer-postgres-latest.onrender.com/get-postgres-data"
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            df = pd.DataFrame(data)
+            st.success("✅ Datos obtenidos desde Postgres:")
+            st.dataframe(df)
+        else:
+            st.error(f"❌ Error al obtener datos: {response.status_code}")
+            st.write(response.text)
+    except Exception as e:
+        st.error(f"❌ Error de conexión: {e}")
+
+# MONGO
+def get_data_mongo():
+    url = "https://consumer-mongo-latest.onrender.com/get-mongo-data"
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            df = pd.DataFrame(data)
+            st.success("✅ Datos obtenidos desde Mongo:")
+            st.dataframe(df)
+        else:
+            st.error(f"❌ Error al obtener datos: {response.status_code}")
+            st.write(response.text)
+    except Exception as e:
+        st.error(f"❌ Error de conexión: {e}")
+
+with col3:
+    if st.button("📥 Obtener datos de Postgres"):
+        get_data_postgres()
+
+with col4:
+    if st.button("📥 Obtener datos de Mongo"):
+        get_data_mongo()
